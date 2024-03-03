@@ -9,14 +9,14 @@
 	</parent>
 	<groupId>dev</groupId>
 	<artifactId>backend-release</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>backend-release</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
 		<docker.publishRegistry.url>ghcr.io</docker.publishRegistry.url>
-		<docker.publishRegistry.username></docker.publishRegistry.username>
-		<docker.publishRegistry.password></docker.publishRegistry.password>
+		<docker.publishRegistry.username/>
+		<docker.publishRegistry.password/>
 		<spring-boot.build-image.imageName>${docker.publishRegistry.url}/${docker.publishRegistry.username}/${project.artifactId}:${project.version}</spring-boot.build-image.imageName>
 	</properties>
 	<dependencies>
