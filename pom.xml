@@ -16,6 +16,7 @@
 		<java.version>21</java.version>
 		<image.namespace>ghcr.io/mghilardelli</image.namespace>
 		<image.version>${project.version}</image.version>
+		<spring-boot.build-image.imageName>ghcr.io/mghilardelli/backend:${image.version}</spring-boot.build-image.imageName>
 	</properties>
 	<dependencies>
 		<dependency>
