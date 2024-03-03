@@ -8,15 +8,16 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>dev</groupId>
-	<artifactId>backend</artifactId>
+	<artifactId>backend-release</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>backend</name>
+	<name>backend-release</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
-		<image.namespace>ghcr.io/mghilardelli</image.namespace>
-		<image.version>${project.version}</image.version>
-		<spring-boot.build-image.imageName>ghcr.io/mghilardelli/backend-release:${image.version}</spring-boot.build-image.imageName>
+		<docker.publishRegistry.url>ghcr.io</docker.publishRegistry.url>
+		<docker.publishRegistry.username></docker.publishRegistry.username>
+		<docker.publishRegistry.password></docker.publishRegistry.password>
+		<spring-boot.build-image.imageName>${docker.publishRegistry.url}/${docker.publishRegistry.username}/${project.artifactId}:${project.version}</spring-boot.build-image.imageName>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -36,54 +37,46 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>${spring-boot.build-image.imageName}</name>
+						<publish>true</publish>
+					</image>
+					<docker>
+						<publishRegistry>
+							<url>${docker.publishRegistry.url}</url>
+							<username>${docker.publishRegistry.username}</username>
+							<password>${docker.publishRegistry.password}</password>
+						</publishRegistry>
+					</docker>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
-	<profiles>
-		<profile>
-			<id>github-image-preview</id>
-			<activation>
-				<property>
-					<name>github.image.preview</name>
-					<value>true</value>
-				</property>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>spring-boot-maven-plugin</artifactId>
-						<version>3.2.2</version>
-						<configuration>
-							<imageName>${image.namespace}/${project.artifactId}-preview:${image.version}</imageName>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>github-image-latest</id>
-			<activation>
-				<property>
-					<name>github.image.release</name>
-					<value>true</value>
-				</property>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>spring-boot-maven-plugin</artifactId>
-						<version>3.2.2</version>
-						<configuration>
-							<imageName>${image.namespace}/${project.artifactId}</imageName>
-							<tags>
-								${image.namespace}/${project.artifactId}:${image.version},${image.namespace}/${project.artifactId}:latest
-							</tags>
-							<publish>true</publish>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+<!--	<profiles>-->
+<!--		<profile>-->
+<!--			<id>github-image-latest</id>-->
+<!--			<activation>-->
+<!--				<property>-->
+<!--					<name>github.image.release</name>-->
+<!--					<value>true</value>-->
+<!--				</property>-->
+<!--			</activation>-->
+<!--			<build>-->
+<!--				<plugins>-->
+<!--					<plugin>-->
+<!--						<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--						<configuration>-->
+<!--							<imageName>${docker.publishRegistry.username}/${project.artifactId}</imageName>-->
+<!--							<tags>-->
+<!--								${docker.publishRegistry.username}/${project.artifactId}:${image.version},${docker.publishRegistry.username}/${project.artifactId}:latest-->
+<!--							</tags>-->
+<!--							<publish>true</publish>-->
+<!--						</configuration>-->
+<!--					</plugin>-->
+<!--				</plugins>-->
+<!--			</build>-->
+<!--		</profile>-->
+<!--	</profiles>-->
 </project>

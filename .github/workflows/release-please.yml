@@ -35,11 +35,11 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: 'maven'
-      - name: Login to GitHub Container Registry
-        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io --username ${{ github.actor }} --password-stdin
       - name: Create container image
         run: |
           mvn spring-boot:build-image \
             -Dmaven.test.skip=true \
-            -Dgithub.image.release=true \
             -Dimage.version=$VERSION
+            -Ddocker.publishRegistry.username=${{ github.actor }} \
+            -Ddocker.publishRegistry.password=${{ secrets.RELEASE_PLEASE_TOKEN }} \
+
