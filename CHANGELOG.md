@@ -5,6 +5,20 @@
 
 ### Features
 
+* change hello world ([202248f](https://github.com/mghilardelli/backend-release/commit/202248fdd751969fe47a4a10ef704acb5ba8df0d))
+* change response ([5a24d92](https://github.com/mghilardelli/backend-release/commit/5a24d92586b16275ff39819b1bde2089bedf7c5e))
+* first change ([32dd54e](https://github.com/mghilardelli/backend-release/commit/32dd54e5db453f3b2b28ceaf4b6b8b91e2563886))
+
+
+### Bug Fixes
+
+* maven plugin version ([947afdc](https://github.com/mghilardelli/backend-release/commit/947afdcd88abd380b9e3ec1bafb99aeefb98ee6f))
+
+## 1.0.0 (2024-03-03)
+
+
+### Features
+
 * another try ([e5ddf1d](https://github.com/mghilardelli/demo-release/commit/e5ddf1d88169f6da903c610e67fbe9cc85b040c9))
 * another try ([323e80b](https://github.com/mghilardelli/demo-release/commit/323e80b2a61fc60d34b32d8de21b0441c79c16d3))
 * backend changes ([49d8a7f](https://github.com/mghilardelli/demo-release/commit/49d8a7f125e54e468d3cb3e082e957c2fd0690fe))
