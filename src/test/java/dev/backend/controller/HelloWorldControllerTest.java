@@ -19,7 +19,7 @@ class HelloWorldControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    void getShouldReturnDefaultMessage() {
+    void helloWorldShouldReturnDefaultMessage() {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/", String.class))
             .isEqualTo("Hello World");
     }
