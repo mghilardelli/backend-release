@@ -52,6 +52,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>spring-boot-maven-plugin</artifactId>
+						<version>3.2.2</version>
 						<configuration>
 							<imageName>${image.namespace}/${project.artifactId}-preview:${image.version}</imageName>
 						</configuration>
